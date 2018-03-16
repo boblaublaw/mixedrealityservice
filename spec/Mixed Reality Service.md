@@ -58,19 +58,19 @@ In the simplest case, the MRS ‘add’ request operation includes the following
 + FOAD
 + Service Point
 
-Latitude is defined as a floating point number with five significant digits of precision, and a range from 90.0 to -90.0 degrees inclusive.
+   Latitude is defined as a floating point number with five significant digits of precision, and a range from 90.0 to -90.0 degrees inclusive.
 
-Longitude is defined as a floating point number with five significant digits of precision, and a range from 180.0 to -180.0 degrees inclusive. 
+   Longitude is defined as a floating point number with five significant digits of precision, and a range from 180.0 to -180.0 degrees inclusive. 
 
-Elevation is defined as a floating point number with three significant digits of precision, as meters above sea level (or below sea level, in the case of negative values).
+   Elevation is defined as a floating point number with three significant digits of precision, as meters above sea level (or below sea level, in the case of negative values).
 
-FOAD is a binary flag. If TRUE, the MRS mapping requests strict privacy and will provide no information about itself via a service point. Where FOAD is TRUE, the Service Point field is optional and undefined.
+   FOAD is a binary flag. If TRUE, the MRS mapping requests strict privacy and will provide no information about itself via a service point. Where FOAD is TRUE, the Service Point field is optional and undefined.
 
-Service Point is defined as a URI as specified in IETF RFC 3986. It is strongly recommended that the Service Point resolve to a valid MRSE interrogation point, but the Service Point may be any well-formed URI. Where FOAD is TRUE, the Service Point field is optional and undefined.
+   Service Point is defined as a URI as specified in IETF RFC 3986. It is strongly recommended that the Service Point resolve to a valid MRSE interrogation point, but the Service Point may be any well-formed URI. Where FOAD is TRUE, the Service Point field is optional and undefined.
 
 An MRRS ‘add’ request packages these parameters into a JSON data structure as follows:
 
-```javascript
+```
 { “add”: {
     “lat”: <value>,
     “lon”: <value>,
@@ -83,7 +83,7 @@ An MRRS ‘add’ request packages these parameters into a JSON data structure a
 The MRS endpoint transmits a response to the ‘add’ request with a one required field, ‘added’. If the ‘add’ request has been successfully added to the MRS mapping, ‘added’ returns TRUE. If the MRS mapping was not successful, ‘added’ returns FALSE. 
 
 This response is packed into a JSON data structure as follows:
-```javascript
+```
 { “response”: {
     “added”: <boolean>
 } }
@@ -99,7 +99,7 @@ The specific content of the verification field is intentionally left undefined i
 
 In the case of an ‘add’ request, it would be added to the JSON data structure as follows:
 
-```javascript
+```
 { “add”: {
     “lat”: <value>,
     “lon”: <value>,
@@ -137,19 +137,19 @@ In the simplest case, the MRRS ‘delete’ request operation includes the follo
 + FOAD
 + Service Point
 
-Latitude is defined as a floating point number with five significant digits of precision, and a range from 90.0 to -90.0 degrees inclusive.
+   Latitude is defined as a floating point number with five significant digits of precision, and a range from 90.0 to -90.0 degrees inclusive.
 
-Longitude is defined as a floating point number with five significant digits of precision, and a range from 180.0 to -180.0 degrees inclusive. 
+   Longitude is defined as a floating point number with five significant digits of precision, and a range from 180.0 to -180.0 degrees inclusive. 
 
-Elevation is defined as a floating point number with three significant digits of precision, as meters above sea level (or below sea level, in the case of negative values).
+   Elevation is defined as a floating point number with three significant digits of precision, as meters above sea level (or below sea level, in the case of negative values).
 
-FOAD is a binary flag. If TRUE, the MRS mapping has requested strict privacy and will provide no information about itself via a service point. Where FOAD is TRUE, the Service Point field is optional and undefined.
+   FOAD is a binary flag. If TRUE, the MRS mapping has requested strict privacy and will provide no information about itself via a service point. Where FOAD is TRUE, the Service Point field is optional and undefined.
 
-Service Point is defined as a URI as specified in IETF RFC 3986. Where FOAD is TRUE, the Service Point field is optional and undefined.
+   Service Point is defined as a URI as specified in IETF RFC 3986. Where FOAD is TRUE, the Service Point field is optional and undefined.
 
 An MRRS ‘delete’ request packages these parameters into a JSON data structure as follows:
 
-```javascript
+```
 { “delete”: {
     “lat”: <value>,
     “lon”: <value>,
@@ -163,7 +163,7 @@ The MRRS endpoint transmits a response to the ‘delete’ request with a one re
 
 This response is packed into a JSON data structure as follows:
 
-```javascript
+```
 { “response”: {
     “removed”: <boolean>
 } }
@@ -179,7 +179,7 @@ The specific content of the verification field is intentionally left undefined i
 
 In the case of an ‘delete’ request, it would be added to the JSON data structure as follows:
 
-```javascript
+```
 { “delete”: {
     “lat”: <value>,
     “lon”: <value>,
@@ -196,7 +196,7 @@ For security purposes, the contents of the verification field MUST be encrypted 
 
 MRS ‘delete’ requests and responses can be transmitted via any secure transport mechanism (HTTPS, ssh, TLS, etc., see ‘Security Considerations’ below). Under no circumstances should MRRS traffic ever be transmitted over an unencrypted channel.
 
-[ SEQUENCE DIAGRAM TBD ]
+**[ SEQUENCE DIAGRAM TBD ]**
 
 
 # MRS SEARCH REQUEST
@@ -212,17 +212,17 @@ An MRS client transmits a ‘search’ request with the following parameters:
 + Elevation
 + Range
 
-Latitude is defined as a floating point number with five significant digits of precision, and a range from 90.0 to -90.0 degrees inclusive.
+   Latitude is defined as a floating point number with five significant digits of precision, and a range from 90.0 to -90.0 degrees inclusive.
 
-Longitude is defined as a floating point number with five significant digits of precision, and a range from 180.0 to -180.0 degrees inclusive. 
+   Longitude is defined as a floating point number with five significant digits of precision, and a range from 180.0 to -180.0 degrees inclusive. 
 
-Elevation is defined as a floating point number with three significant digits of precision, as meters above sea level (or below sea level, in the case of negative values).
+   Elevation is defined as a floating point number with three significant digits of precision, as meters above sea level (or below sea level, in the case of negative values).
 
-Range is defined as a floating point number with one significant digit of precision. The range value sets a radius in metres for the discovery query, and must be a positive number from 0.0 to 100000.0, setting the maximum range radius for any discovery request at 100 kilometers.
+   Range is defined as a floating point number with one significant digit of precision. The range value sets a radius in metres for the discovery query, and must be a positive number from 0.0 to 100000.0, setting the maximum range radius for any discovery request at 100 kilometers.
 
 An MRS ‘search’ request packages these parameters into a JSON data structure as follows:
 
-```javascript
+```
 { “search”: {
     “lat”: <value>,
     “lon”: <value>,
@@ -248,19 +248,19 @@ Each entry in the List of Matches is a structure containing the following data:
 + FOAD
 + Service Point
 
-Latitude is defined as a floating point number with five significant digits of precision, and a range from 90.0 to -90.0 degrees inclusive.
+   Latitude is defined as a floating point number with five significant digits of precision, and a range from 90.0 to -90.0 degrees inclusive.
 
-Longitude is defined as a floating point number with five significant digits of precision, and a range from 180.0 to -180.0 degrees inclusive. 
+   Longitude is defined as a floating point number with five significant digits of precision, and a range from 180.0 to -180.0 degrees inclusive. 
 
-Elevation is defined as a floating point number with three significant digits of precision, as meters above sea level (or below sea level, in the case of negative values).
+   Elevation is defined as a floating point number with three significant digits of precision, as meters above sea level (or below sea level, in the case of negative values).
 
-FOAD is a binary flag. If TRUE, the match has requested strict privacy and will provide no information about itself, nor should it be queried via MRSE for any further information. Where FOAD is TRUE, the Service Point field is optional and undefined.
+   FOAD is a binary flag. If TRUE, the match has requested strict privacy and will provide no information about itself, nor should it be queried via MRSE for any further information. Where FOAD is TRUE, the Service Point field is optional and undefined.
 
-Service Point is defined as a URI as specified in IETF RFC 3986. It is strongly recommended that the Service Point resolve to a valid MRSE interrogation point, but the Service Point may be any well-formed URI. Where FOAD is TRUE, the Service Point field is optional and undefined.
+   Service Point is defined as a URI as specified in IETF RFC 3986. It is strongly recommended that the Service Point resolve to a valid MRSE interrogation point, but the Service Point may be any well-formed URI. Where FOAD is TRUE, the Service Point field is optional and undefined.
 
 An MRS ‘search’ response packages these parameters into a JSON data structure as follows:
 
-```javascript
+```
 { “response”: {
     “matches”: <value>,
     “matching”: [ array of entries... ]
@@ -269,7 +269,7 @@ An MRS ‘search’ response packages these parameters into a JSON data structur
 
 Each entry within the array in the “matching” field is a JSON data structure as follows:
 
-```javascript
+```
 {
 “lat”: <value>,
     “lon”: <value>,
@@ -281,7 +281,7 @@ Each entry within the array in the “matching” field is a JSON data structure
 
 MRS ‘search’ request and responses can be transmitted via any secure transport mechanism (HTTPS, ssh, TLS, etc., see ‘Security Considerations’ below). Under no circumstances should a ‘search’ request or response ever be transmitted over an unencrypted channel.
 
-[ SEQUENCE DIAGRAM TBD ]
+**[ SEQUENCE DIAGRAM TBD ]**
 
 
 # ALTERNATIVE MAPPINGS
