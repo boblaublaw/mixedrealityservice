@@ -114,7 +114,7 @@ For security purposes, the contents of the verification field MUST be encrypted 
 
 MRS ‘add’ requests and responses can be transmitted via any secure transport mechanism (HTTPS, ssh, TLS, etc., see ‘Security Considerations’ below). Under no circumstances should MRRS traffic ever be transmitted over an unencrypted channel.
 
-[ SEQUENCE DIAGRAM TBD ]
+** [ SEQUENCE DIAGRAM TBD ] **
 
 
 # MRS DELETE REQUEST
@@ -196,7 +196,7 @@ For security purposes, the contents of the verification field MUST be encrypted 
 
 MRS ‘delete’ requests and responses can be transmitted via any secure transport mechanism (HTTPS, ssh, TLS, etc., see ‘Security Considerations’ below). Under no circumstances should MRRS traffic ever be transmitted over an unencrypted channel.
 
-**[ SEQUENCE DIAGRAM TBD ]**
+** [ SEQUENCE DIAGRAM TBD ]**
 
 
 # MRS SEARCH REQUEST
